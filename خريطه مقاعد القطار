@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>خريطة مقاعد القطار</title>
+  <style>
+    /*  كود CSS  */
+    .seat-map {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /*  عدد  الأعمدة  */
+      gap: 10px;
+    }
+    
+    .seat {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+    }
+    
+    .seat.available {
+      background-color: lightgreen; /*  لون  المقعد  المتاح  */
+    }
+    
+    .seat.booked {
+      background-color: lightcoral; /*  لون  المقعد  المحجوز  */
+    }
+    
+    .seat.selected {
+      background-color: lightblue; /*  لون  المقعد  المحدد  */
+    }
+    .seat-map {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      
+      .seat {
+        width: 60px;  /*   زيادة   العرض   قليلًا   */
+        height: 40px; /*   تقليل   الارتفاع   قليلًا   */
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 40px; /*   مواءمة   النص   مع   الارتفاع   الجديد   */
+        cursor: pointer;
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);  /*   إنشاء   شكل   المقعد   */
+      }
+      
+      .seat.available {
+        background-color: lightgreen;
+      }
+      
+      .seat.booked {
+        background-color: lightcoral;
+      }
+      
+      .seat.selected {
+        background-color: lightblue;
+      }
+  </style>
+</head>
+<body>
+
+  <div class="seat-map">
+    <div class="row">
+      <div class="seat available" data-seat-number="1">1</div>
+      <div class="seat available" data-seat-number="2">2</div>
+      <div class="seat available" data-seat-number="3">3</div>
+      <div class="seat available" data-seat-number="4">4</div>
+    </div>
+    <div class="row">
+      <div class="seat available" data-seat-number="5">5</div>
+      <div class="seat available" data-seat-number="6">6</div>
+      <div class="seat booked" data-seat-number="7">7</div> <!--  مقعد  محجوز  مثال  -->
+      <div class="seat available" data-seat-number="8">8</div>
+    </div>
+    <!--  ...  المزيد  من  الصفوف  والمقاعد  حسب  الرغبة  -->
+  </div>
+
+  <script>
+    //  كود  JavaScript
+    const seats = document.querySelectorAll('.seat'); 
+
+    seats.forEach(seat => {
+      seat.addEventListener('click', () => {
+        if (!seat.classList.contains('booked')) { 
+          seat.classList.toggle('selected'); 
+
+          //  هنا  يمكنك  إضافة  المنطق  لعرض  نموذج  بيانات  المسافر
+          //  ونقله  إلى   صفحة  ملخص   الحجز
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
